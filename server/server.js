@@ -11,10 +11,21 @@ const db = require("./config/connection");
 // port and app
 const PORT = process.env.PORT || 3001;
 
+const { authMiddleware } = require("./utils/auth");
+
+// const server = new ApolloServer({
+//   typeDefs,
+//   resolvers,
+//   // ? add context for headers --> allows jWT headers auth
+//   context: ({ req }) => req.headers,
+// });
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
+
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
