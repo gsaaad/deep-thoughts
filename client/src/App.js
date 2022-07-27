@@ -15,7 +15,8 @@ import {
 import Home from "./pages/Home";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  // Uniform Resource Identifier
+  uri: "/graphql",
 });
 
 const client = new ApolloClient({
